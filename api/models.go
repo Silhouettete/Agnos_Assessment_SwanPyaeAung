@@ -24,15 +24,15 @@ type Staff struct {
 }
 
 type CreateStaffRequest struct {
-	HospitalID   int    `json:"hospital_id" binding:"required"`
-	FirstNameTH  string `json:"first_name_th" binding:"required"`
-	MiddleNameTH string `json:"middle_name_th"`
-	LastNameTH   string `json:"last_name_th" binding:"required"`
-	FirstNameEN  string `json:"first_name_en" binding:"required"`
-	MiddleNameEN string `json:"middle_name_en"`
-	LastNameEN   string `json:"last_name_en" binding:"required"`
-	Email        string `json:"email" binding:"required,email"`
-	Password     string `json:"password" binding:"required,min=8"`
+	HospitalID   int    `json:"hospital_id"    binding:"required"`
+	FirstNameTH  string `json:"first_name_th"  binding:"required"`
+	MiddleNameTH string `json:"middle_name_th"` // no binding
+	LastNameTH   string `json:"last_name_th"   binding:"required"`
+	FirstNameEN  string `json:"first_name_en"  binding:"required"`
+	MiddleNameEN string `json:"middle_name_en"` // no binding
+	LastNameEN   string `json:"last_name_en"   binding:"required"`
+	Email        string `json:"email"          binding:"required,email"`
+	Password     string `json:"password"       binding:"required,min=8"`
 	Role         string `json:"role"`
 }
 

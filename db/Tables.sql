@@ -10,10 +10,10 @@ CREATE TABLE
         staff_id SERIAL PRIMARY KEY,
         hospital_id INTEGER NOT NULL REFERENCES hospitals (hospital_id),
         first_name_th TEXT NOT NULL,
-        middle_name_th TEXT NOT NULL,
+        middle_name_th TEXT,
         last_name_th TEXT NOT NULL,
         first_name_en TEXT NOT NULL,
-        middle_name_en TEXT NOT NULL,
+        middle_name_en TEXT,
         last_name_en TEXT NOT NULL,
         email TEXT UNIQUE NOT NULL,
         password_hash TEXT NOT NULL,
@@ -84,5 +84,3 @@ VALUES
         'Male',
         1
     );
-
-    {"national_id":"1234567890123","passport_id":"PP123456","first_name_th":"สมชาย","middle_name_th":null,"last_name_th":"ใจดี","first_name_en":"Somchai","middle_name_en":null,"last_name_en":"Jaidee","date_of_birth":"1990-01-15","patient_hn":"HN001","phone_number":"0812345678","email":"somchai@email.com","gender":"Male","hospital_id":1}
