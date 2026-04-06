@@ -1,0 +1,22 @@
+# Environment variables (DO NOT COMMIT)
+.env
+
+# Build artifacts
+*.exe
+*.out
+*.log
+
+# Go build
+/bin/
+/vendor/
+
+# Docker
+.dockerignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

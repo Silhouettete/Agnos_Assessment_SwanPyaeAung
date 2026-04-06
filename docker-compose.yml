@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: hospital_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: swanpyaeaung
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: hospital_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U swanpyaeaung -d hospital_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: hospital_app
+    restart: always
+    environment:
+      DATABASE_URL: postgres://swanpyaeaung:password@db:5432/hospital_db
+      JWT_SECRET: SECRET
+    ports:
+      - "8081:8081"
+    depends_on:
+      db:
+        condition: service_healthy # wait until postgres is ready
+
+  nginx:
+    image: nginx:latest
+    container_name: hospital_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app
+
+volumes:
+  postgres_data:
